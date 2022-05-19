@@ -4,3 +4,6 @@
 /runtime
 /tmp
 /.env
+
+/yarn-error.log
+/yarn.lock
