@@ -1,0 +1,33 @@
+{
+  "name": "parser.starterkit",
+  "version": "1.0.0",
+  "description": "Apify Parser StarterKit .",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "DEBUG=express:* nodemon --exec babel-node src/index.js",
+    "start-debug": "DEBUG=express:* nodemon --exec babel-node src/index.js",
+    "build": "babel index.js --out-file dist/index.min.js",
+    "browser": "chromium-browser --remote-debugging-port=9222",
+    "helper": "node src/commands/helper"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "apify": "^0.22.4",
+    "axios": "^0.21.0",
+    "node-cache": "^5.1.2",
+    "node-html-parser": "^2.0.2",
+    "nodemon": "^2.0.6",
+    "proxy-chain": "^0.4.7",
+    "puppeteer": "^7.0.4",
+    "puppeteer-extra": "^3.1.17",
+    "puppeteer-extra-plugin-stealth": "^2.7.5",
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^4.1.0"
+  }
+}
