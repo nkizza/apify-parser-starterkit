@@ -84,6 +84,10 @@ class Filesystem extends __component {
         return fsStatic.createReadStream(path);
     }
 
+    writeStream(path) {
+        return fsStatic.open(path, "a+");
+    }
+
     async stat(path, key = null) {
         let stat = await fs.stat(path);
         if(key)
@@ -91,12 +95,16 @@ class Filesystem extends __component {
         return stat;
     }
 
-    read(path) {
-        return fs.readFile(path);
+    read(path, encoding = "utf8" ) {
+        return fs.readFile(path, { encoding });
     }
 
     async write(path, data, encoding = "utf8") {
         await fs.writeFile(path, data, encoding);
+    }
+
+    async append(path, data, encoding = "utf8") {
+        await fs.appendFile(path, data);
     }
 
     async writeBinary(path, data) {

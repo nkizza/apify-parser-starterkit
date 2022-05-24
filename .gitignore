@@ -1,9 +1,11 @@
-/.idea
-/node_modules
-/apify_storage
-/runtime
-/tmp
-/.env
+.idea
+node_modules
+apify_storage
+runtime
+example
+tmp
 
-/yarn-error.log
-/yarn.lock
+.env
+
+yarn-error.log
+yarn.lock

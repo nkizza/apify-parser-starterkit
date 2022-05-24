@@ -1,7 +1,7 @@
 {
-  "name": "parser.starterkit",
+  "name": "autoru.parser",
   "version": "1.0.0",
-  "description": "Apify Parser StarterKit .",
+  "description": "Autoru Parser",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,18 +14,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.95.0",
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "apify": "^0.22.4",
     "axios": "^0.21.0",
+    "dotenv": "^16.0.1",
     "node-cache": "^5.1.2",
     "node-html-parser": "^2.0.2",
     "nodemon": "^2.0.6",
     "proxy-chain": "^0.4.7",
     "puppeteer": "^7.0.4",
     "puppeteer-extra": "^3.1.17",
-    "puppeteer-extra-plugin-stealth": "^2.7.5"
+    "puppeteer-extra-plugin-stealth": "^2.7.5",
+    "stream-transform": "^3.0.4"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^4.1.0"

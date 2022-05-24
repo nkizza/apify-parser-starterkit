@@ -11,9 +11,12 @@ const Apify         = require("apify");
 // If the lock file mtime was more than 5 minutes ago, we consider it not running.
 
 class QueueManager extends __component {
+    #parsers = {};
+
     constructor(app) {
         super(app);
         this.filesystem.assureDir(this.lockDir);
+        this.#parsers = app.config.queues;
     }
 
     get config() {
@@ -27,15 +30,7 @@ class QueueManager extends __component {
     get lockDir() {
         return `${this.config.runtimeDir}/lock`;
     }
-
     //<editor-fold desc="Queue config and checks">
-    #parsers = {
-        "iaai-reader"   : require("../../parsers/iaai/Reader"),
-        "iaai-list"     : require("../../parsers/iaai/List"),
-        "copart-list"   : require("../../parsers/copart/List"),
-        "iaai-details"  : require("../../parsers/iaai/Details"),
-        "copart-details": require("../../parsers/copart/Details"),
-    };
 
     get queues() {
         return Object.keys(this.#parsers);
@@ -168,7 +163,7 @@ class QueueManager extends __component {
      * Import urls to a queue.
      * @param {string} name Queue name.
      * @param {string|array} urls An array of imported urls.
-     * @param {bool} unique Whether to import urls with unique keys (to allow one link to be parsed several times).
+     * @param {boolean} unique Whether to import urls with unique keys (to allow one link to be parsed several times).
      * @returns {Promise<void>}
      */
     async import(name, urls, unique = false) {

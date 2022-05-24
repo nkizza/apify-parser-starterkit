@@ -25,7 +25,7 @@ class PuppeteerParser extends __Parser {
 
         const crawlerOptions = {
             requestQueue,
-            proxyConfiguration,
+            //proxyConfiguration,
             maxRequestRetries   : this.config.maxRequestRetries,
             maxRequestsPerCrawl : this.config.maxRequestsPerCrawl,
 
@@ -36,7 +36,8 @@ class PuppeteerParser extends __Parser {
 
             gotoFunction                : this.gotoFunction.bind(this),
             handlePageFunction          : this.handlePageFunction.bind(this),
-            handleFailedRequestFunction : this.handleErrorFunction.bind(this)
+            handleFailedRequestFunction : this.handleErrorFunction.bind(this),
+            handlePageTimeoutSecs: this.config.puppeteer.handlePageTimeoutSecs,
         };
 
         const crawler = new Apify.PuppeteerCrawler(crawlerOptions);

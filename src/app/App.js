@@ -6,6 +6,7 @@ const Helper    = require("./components/Helper");
 const Proxy     = require("./components/Proxy");
 const QueueManager = require("./components/QueueManager");
 const Filesystem = require("./components/Filesystem");
+const Storage    = require("./components/Storage");
 
 /**
  * Aggregator of all helper classes to manage queues.
@@ -19,6 +20,7 @@ class App {
     #proxy;
     #queueManager;
     #filesystem;
+    #storage;
 
     get backend() {
         if(!this.#backend)
@@ -61,6 +63,12 @@ class App {
         if (!this.#filesystem)
             this.#filesystem = new Filesystem(this);
         return this.#filesystem;
+    }
+
+    get storage() {
+        if (!this.#storage)
+            this.#storage = new Storage(this, this.config.storage);
+        return this.#storage;
     }
 
     //</editor-fold>

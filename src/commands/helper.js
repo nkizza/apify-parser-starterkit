@@ -12,7 +12,9 @@ class Helper extends __cmd {
         drop: "Drop queue(s) by name",
         status: "Queue(s) status by name",
         import: "Import URLs to queue",
+        importfile: "Import URLs to queue from file (separated with line breaks)",
         mayberun: "Run available queues",
+        start: "Start running queue by name",
     };
 
     async drop(names = []) {
@@ -69,13 +71,22 @@ class Helper extends __cmd {
         await this.app.queueManager.mayberun(queues);
     }
 
+    async start(name) {
+        await this.app.queueManager.run(name);
+    }
+
     async import(args) {
         let name = args.shift();
         await this.app.queueManager.import(name, args);
     }
 
-    async test(args) {
-        console.log("Everything is tested");
+    async importfile(args) {
+        const name = args.shift(),
+            fileName = args.shift();
+
+        let urls = await this.app.filesystem.read(fileName);
+        urls = urls.split("\n").map(e => e.trim()).filter(e => !!e);
+        await this.app.queueManager.import(name, urls);
     }
 }
 
